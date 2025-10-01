@@ -36,7 +36,7 @@ const products = [
         id: 5,
         name: "Atomic Habits E-book by James Clear",
         description: "Transform your life with tiny changes. This proven framework reveals practical strategies to form good habits, break bad ones, and achieve remarkable results by focusing on your system, not just your goals.",
-        price: 49.99,
+        price: 59.99,
         category: "E-Book",
         image: "images/Atomic Habits.jpg"
     },
