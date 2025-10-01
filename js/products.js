@@ -1,3 +1,4 @@
+// Function to load products on the products page
 function loadProducts() {
     const productsList = document.getElementById('products-list');
     if (!productsList) return;
@@ -8,7 +9,9 @@ function loadProducts() {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         productCard.innerHTML = `
-            <div class="product-image">${product.image}</div>
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTllY2VmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzljYTJhZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-category">${product.category}</p>
@@ -20,12 +23,12 @@ function loadProducts() {
     });
 }
 
-// load product details
+// Function to load product details
 function loadProductDetails() {
     const productDetailsContent = document.getElementById('product-details-content');
     if (!productDetailsContent) return;
     
-    // get product ID from URL param
+    // Get product ID from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const productId = parseInt(urlParams.get('id'));
     
@@ -33,7 +36,9 @@ function loadProductDetails() {
     
     if (product) {
         productDetailsContent.innerHTML = `
-            <div class="product-image-large">${product.image}</div>
+            <div class="product-image-large">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTllY2VmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzljYTJhZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlIEF2YWlsYWJsZTwvdGV4dD48L3N2Zz4='">
+            </div>
             <div class="product-info-details">
                 <h2>${product.name}</h2>
                 <p class="product-category">${product.category}</p>
@@ -44,7 +49,7 @@ function loadProductDetails() {
         `;
     } else {
         productDetailsContent.innerHTML = `
-            <div class="error-message">
+            <div class="error-message" style="text-align: center; padding: 2rem;">
                 <h2>Product Not Found</h2>
                 <p>The product you're looking for doesn't exist.</p>
                 <a href="products.html" class="btn">Back to Products</a>
@@ -53,6 +58,7 @@ function loadProductDetails() {
     }
 }
 
+// Initialize products on page load
 document.addEventListener('DOMContentLoaded', function() {
     loadProducts();
     loadProductDetails();
